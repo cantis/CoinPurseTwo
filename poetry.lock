@@ -253,6 +253,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "uwsgi"
+version = "2.0.21"
+description = "The uWSGI server"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "werkzeug"
 version = "2.2.3"
 description = "The comprehensive WSGI web application library."
@@ -269,7 +277,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "4964de9d9347587333a558aa94468e6b6ba6afe5ed58934887fcaffb3d969d2f"
+content-hash = "efcad99760690218a32ef704b9ea156591f2b379dbb046623acec97d1cb7ea41"
 
 [metadata.files]
 attrs = [
@@ -519,6 +527,9 @@ tomli = [
 typing-extensions = [
     {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
     {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
+]
+uwsgi = [
+    {file = "uwsgi-2.0.21.tar.gz", hash = "sha256:35a30d83791329429bc04fe44183ce4ab512fcf6968070a7bfba42fc5a0552a9"},
 ]
 werkzeug = [
     {file = "Werkzeug-2.2.3-py3-none-any.whl", hash = "sha256:56433961bc1f12533306c624f3be5e744389ac61d722175d543e1751285da612"},

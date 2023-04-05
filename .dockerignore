@@ -1,0 +1,12 @@
+.github
+.pytest_cache
+.vscode
+coverage/
+tests/
+venv/
+env/
+.gitignore
+docker-compose.yml
+Dockerfile
+*.md
+data/
