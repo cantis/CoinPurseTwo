@@ -11,8 +11,8 @@ def client() -> Flask:
     yield app.test_client()
 
 
-def test_home(client):
-    '''Test the home endpoint.'''
-    response = client.get('/')
+def test_players(client: Flask) -> None:
+    '''Test the players endpoint.'''
+    response = client.get('/players')
     assert response.status_code == 200
-    assert response.json == {'message': 'Welcome to CoinPurse!'}
+    assert response.json == {'message': 'Get players'}

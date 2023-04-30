@@ -19,10 +19,12 @@ def create_app(test_config=None) -> Flask:
     db.init_app(app)
 
     # Import Route modules
-    from api.routes import home
+    from api.routes import home, character, players
 
     # Register Blueprints
     app.register_blueprint(home.home_bp)
+    app.register_blueprint(character.character_bp)
+    app.register_blueprint(players.player_bp)
 
     return app
 
