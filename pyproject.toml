@@ -15,7 +15,6 @@ sqlalchemy = "^2.0.5.post1"
 flask-sqlalchemy = "^3.0.3"
 toml = "^0.10.2"
 ruff = "^0.0.263"
-alembic = "^1.10.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
