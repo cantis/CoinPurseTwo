@@ -16,4 +16,11 @@ See the docs folder for ER diagram of the above tables.
 Trying to be really intentional with the addition of the DB tables, I've added my intended design to the docs folder with and Entity Diagram. Don't want to rush, Just want to add the tables and get migrations running. I expect I'll run this against postgres in production, but for testing it will run against an in-memory database. I'm anticipating some issues with: configuration, uwisgi setup and using the instance folder properly.
 
 ## 2023--4-30
-Added an instance folder and I was able to also add a config.toml file, set up it's configuration values and add it to the application. I've also decided to make this an API vs. a web app. I'll do the front end in Vue... which I'm also learning. 
+Added an instance folder and I was able to also add a config.toml file, set up it's configuration values and add it to the application. I've also decided to make this an API vs. a web app. I'll do the front end in Vue... which I'm also learning.
+
+## 2023-05-02
+Adding Flask-Migrate to the application, found out that the following command initializes the migrations folder: `flask --app startup db init`
+Note to self: see Obsidian Flask-Migrate Notes!
+
+## 2023-05-22
+After a painful run I have migrations working, looks like this version of flask-migrate or alembic doesn't recognise tables that have base classes and inherrit from them. When I removed the base class from the tables the migrations worked. I'll have to look into this more.

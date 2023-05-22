@@ -15,6 +15,7 @@ sqlalchemy = "^2.0.5.post1"
 flask-sqlalchemy = "^3.0.3"
 toml = "^0.10.2"
 ruff = "^0.0.263"
+flask-migrate = "^4.0.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -25,7 +26,29 @@ line-length = 120
 skip-string-normalization = true
 
 [tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
 line-length = 120
 
-
-
+[tool.ruff.flake8-quotes]
+docstring-quotes = "single"
