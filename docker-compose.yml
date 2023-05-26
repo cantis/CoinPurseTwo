@@ -1,10 +1,10 @@
 services:
-  web:
-    build: ./web
-    container_name: web
+  api:
+    build: ./api
+    container_name: api
     restart: always
     environment:
-      - APP_NAME=CoinPurse
+      - APP_NAME=CoinPurse2
     expose:
       - 8080
 
@@ -13,6 +13,6 @@ services:
     container_name: nginx
     restart: always
     ports:
-      - 80:80
+      - 80:8080
     depends_on:
-      - web
+      - api

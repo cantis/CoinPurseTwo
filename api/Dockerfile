@@ -1,13 +1,17 @@
 
-FROM python:3.11.2-alpine3.17
+FROM python:3.11
 
-RUN pip install "poetry==1.2.2"
+RUN mkdir /api
 
-WORKDIR /web
-COPY ./poetry.lock ./pyproject.toml /web/
+COPY /api /api
+COPY ./pyproject.toml /api
 
-RUN poetry config virtualenvs.create false && poetry install --no-dev
 
-ADD . /web
+WORKDIR /api
+ENV PYTHONPATH=${PYTHONPATH}:${PWD}
+
+RUN pip3 install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-dev
 
 CMD ["uwsgi", "uwsgi.ini"]
