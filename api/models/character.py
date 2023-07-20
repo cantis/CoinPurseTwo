@@ -2,6 +2,7 @@ from sqlalchemy import Boolean, Column, DateTime, Integer, String
 
 from api import db
 
+
 class Character(db.Model):
     __tablename__ = 'characters'
 

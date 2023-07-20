@@ -5,7 +5,7 @@ from api import create_app
 
 
 @pytest.fixture(scope='module')
-def client() -> Flask:
+def client():
     '''Create a Flask test client'''
     app = create_app()
     yield app.test_client()
