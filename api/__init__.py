@@ -17,7 +17,7 @@ def create_app() -> Flask:
     load_configuration(app)
 
     # from api.models import bad_table, character, player, BaseModel, SoftDeleteBaseModelclc
-    from api.models import character, player # noqa: F401
+    from api.models import character # noqa: F401
     db.init_app(app)
     migrate.init_app(app, db)
 
@@ -36,10 +36,11 @@ def load_configuration(app: Flask) -> None:
     '''Load configuration from file based on environment.'''
 
     environment = os.getenv('FLASK_ENV', 'development')
+    load_result = False
 
     match environment:
         case 'production':
-            load_result =  app.config.from_pyfile('../instance/config.cfg')
+            load_result = app.config.from_pyfile('../instance/config.cfg')
         case 'development':
             load_result = app.config.from_pyfile('../instance/config.dev.cfg')
         case 'test':

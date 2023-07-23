@@ -16,6 +16,8 @@ flask-sqlalchemy = "^3.0.3"
 toml = "^0.10.2"
 ruff = "^0.0.263"
 flask-migrate = "^4.0.4"
+flask-wtf = "^1.1.1"
+email-validator = "^2.0.0.post2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

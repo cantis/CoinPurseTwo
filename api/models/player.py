@@ -10,12 +10,11 @@ class Player(db.Model):
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
-    phone = Column(String(20), nullable=False, unique=True)
-    is_active = Column(Boolean, nullable=False)
-    is_admin = Column(Boolean, nullable=False)
+    is_active = Column(Boolean, nullable=False, default=True)
+    is_admin = Column(Boolean, nullable=False, default=False)
     created_at = Column(DateTime, nullable=False)
     updated_at = Column(DateTime, nullable=False)
-    is_deleted = Column(Boolean, nullable=False)
+    is_deleted = Column(Boolean, nullable=False, default=False)
     deleted_at = Column(DateTime, nullable=True)
 
     def __repr__(self):

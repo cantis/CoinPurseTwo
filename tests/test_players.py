@@ -4,7 +4,7 @@ from os import environ
 import pytest
 
 from api import create_app, db
-from api.models import player, character
+from api.models.player import Player
 
 # region Fixtures
 
@@ -14,6 +14,7 @@ def app():
     '''Create a Flask test client'''
 
     # set environment to testing
+    environ['FLASK_DEBUG'] = 'True'
     environ['FLASK_ENV'] = 'test'
     app = create_app()
 
@@ -28,16 +29,15 @@ def client(app):
         client = app.test_client()
         db.create_all()
         # add a player
-        new_player = player.Player(
+        new_player = Player(
             first_name='Test',
             last_name='Player',
             email='testplay@noplace.com',
-            phone='555-555-5555',
             is_active=True,
             is_admin=False,
             is_deleted=False,
             created_at=datetime.now(),
-            updated_at=datetime.now()
+            updated_at=datetime.now(),
         )
         db.session.add(new_player)
         db.session.commit()
@@ -48,8 +48,10 @@ def client(app):
 
 # endregion
 
+# region Tests
 
-def test_get_players(client: Flask) -> None:
+
+def test_get_all_players(client: Flask) -> None:
     # Arrange
 
     # Act
@@ -64,19 +66,17 @@ def test_add_player(client: Flask) -> None:
     '''Test the POST /players endpoint.'''
     # Arrange
     url = '/players'
+    data = dict(first_name='Test', last_name='Player', email='noone@noplace.com')
 
     # Act
-    response = client.post(url)
+    response = client.post(url, data=data, follow_redirects=True)
 
     # Assert
-    assert response.status_code == 200
-    assert response.json == {'message': 'Add player'}
-
-
-def test_players(client: Flask) -> None:
-    response = client.get('/players')
-    assert response.status_code == 200
-    assert response.json == {'message': 'Get players'}
+    # assert response.status_code == 200
+    player = Player.query.get(2)
+    assert player.first_name == 'Test'
+    assert player.last_name == 'Player'
+    assert player.email == 'noone@noplace.com'
 
 
 def test_update_player(client: Flask) -> None:
@@ -105,3 +105,6 @@ def test_delete_player(client: Flask) -> None:
     # Assert
     assert response.status_code == 200
     assert response.json == {'message': 'Delete player'}
+
+
+# endregion

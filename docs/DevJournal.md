@@ -24,3 +24,6 @@ Note to self: see Obsidian Flask-Migrate Notes!
 
 ## 2023-05-22
 After a painful run I have migrations working, looks like this version of flask-migrate or alembic doesn't recognise tables that have base classes and inherrit from them. When I removed the base class from the tables the migrations worked. I'll have to look into this more.
+
+## 2023-07-20
+Fixed up a bad test fixture, now running properly. 
