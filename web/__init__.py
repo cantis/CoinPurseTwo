@@ -5,6 +5,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def hello_world():
-        return render_template('template/home.html')
+        return 'Hello, World!'
+        # return render_template('template/home.html')
 
     return app
